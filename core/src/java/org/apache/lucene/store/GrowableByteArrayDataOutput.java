@@ -46,18 +46,19 @@ public final class GrowableByteArrayDataOutput extends DataOutput {
   public GrowableByteArrayDataOutput(int cp) {
     this.bytes = new byte[ArrayUtil.oversize(cp, 1)];
     this.length = 0;
+    System.out.println("===GrowableByteArrayDataOutput===49==="+bytes.length);
   }
-
   @Override
   public void writeByte(byte b) {
+    System.out.println("===writeByte===53===");
     if (length >= bytes.length) {
       bytes = ArrayUtil.grow(bytes);
     }
     bytes[length++] = b;
   }
-
   @Override
   public void writeBytes(byte[] b, int off, int len) {
+    System.out.println("===writeByte===61==="+len);
     final int newLength = length + len;
     if (newLength > bytes.length) {
       bytes = ArrayUtil.grow(bytes, newLength);
@@ -65,7 +66,6 @@ public final class GrowableByteArrayDataOutput extends DataOutput {
     System.arraycopy(b, off, bytes, length, len);
     length = newLength;
   }
-
   @Override
   public void writeString(String string) throws IOException {
     int maxLen = UnicodeUtil.maxUTF8Length(string.length());

@@ -86,13 +86,13 @@ public final class Lucene50CompoundFormat extends CompoundFormat {
         
         // write bytes for file
         long startOffset = data.getFilePointer();
-        try (ChecksumIndexInput in = dir.openChecksumInput(file, IOContext.READONCE)) {
 
+        try (ChecksumIndexInput in = dir.openChecksumInput(file, IOContext.READONCE)) {
           // just copies the index header, verifying that its id matches what we expect
           CodecUtil.verifyAndCopyIndexHeader(in, data, si.getId());
-          
           // copy all bytes except the footer
           long numBytesToCopy = in.length() - CodecUtil.footerLength() - in.getFilePointer();
+          System.out.println("===write===95==="+file.length()+"==="+numBytesToCopy+"==="+file);
           data.copyBytes(in, numBytesToCopy);
 
           // verify footer (checksum) matches for the incoming file we are copying

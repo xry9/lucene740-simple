@@ -49,9 +49,9 @@ public abstract class DataOutput {
    * @see DataInput#readBytes(byte[],int,int)
    */
   public void writeBytes(byte[] b, int length) throws IOException {
+    //System.out.println("===writeBytes===52==="+length+"==="+this.getClass().getName());
     writeBytes(b, 0, length);
   }
-
   /** Writes an array of bytes.
    * @param b the bytes to write
    * @param offset the offset in the byte array

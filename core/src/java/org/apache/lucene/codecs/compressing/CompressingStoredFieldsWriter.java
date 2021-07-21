@@ -274,8 +274,8 @@ public final class CompressingStoredFieldsWriter extends StoredFieldsWriter {
       string = null;
       bytes = null;
     } else {
-      System.out.println("===writeField===277==="+field+"==="+field.getClass().getName());
       bytes = field.binaryValue();
+      System.out.println("===writeField===278==="+field+"==="+field.getClass().getName()+"==="+(bytes==null?"null":bytes.length+"==="+bytes.bytes.length));
       if (bytes != null) {
         bits = BYTE_ARR;
         string = null;
@@ -290,7 +290,7 @@ public final class CompressingStoredFieldsWriter extends StoredFieldsWriter {
 
     final long infoAndBits = (((long) info.number) << TYPE_BITS) | bits;
     bufferedDocs.writeVLong(infoAndBits);
-
+    System.out.println("===writeField===293==="+(bytes != null)+"==="+(string != null)+"===");
     if (bytes != null) {
       bufferedDocs.writeVInt(bytes.length);
       bufferedDocs.writeBytes(bytes.bytes, bytes.offset, bytes.length);

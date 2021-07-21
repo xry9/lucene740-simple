@@ -60,7 +60,7 @@ public final class BytesRef implements Comparable<BytesRef>,Cloneable {
     this.offset = offset;
     this.length = length;
     assert isValid();
-    System.out.println("===BytesRef===63===");try { Integer.parseInt("BytesRefBytesRef"); }catch (Exception e){e.printStackTrace();}
+    //System.out.println("===BytesRef===63===");//try { Integer.parseInt("BytesRefBytesRef"); }catch (Exception e){e.printStackTrace();}
   }
   /** This instance will directly reference bytes w/o making a copy.
    * bytes should not be null */

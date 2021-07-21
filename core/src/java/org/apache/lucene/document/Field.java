@@ -125,9 +125,9 @@ public class Field implements IndexableField {
     if (type.indexOptions() != IndexOptions.NONE && !type.tokenized()) {
       throw new IllegalArgumentException("non-tokenized fields must use String values");
     }
-    
     this.name = name;
     this.fieldsData = reader;
+    System.out.println("===fieldsData===130==="+this.hashCode()+"==="+fieldsData);
     this.type = type;
   }
 
@@ -215,10 +215,10 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("bytes must not be null");
     }
     this.fieldsData = bytes;
+    System.out.println("===fieldsData===218==="+this.hashCode()+"==="+bytes.bytes.length+"==="+bytes.length);//try { Integer.parseInt("fieldsData"); }catch (Exception e){e.printStackTrace();}
     this.type = type;
     this.name = name;
   }
-
   // TODO: allow direct construction of int, long, float, double value too..?
 
   /**
@@ -227,7 +227,7 @@ public class Field implements IndexableField {
    * @param value string value
    * @param type field type
    * @throws IllegalArgumentException if either the name or value
-   *         is null, or if the field's type is neither indexed() nor stored(), 
+   *         is null, or if the field's type is neither indexed() nor stored(),
    *         or if indexed() is false but storeTermVectors() is true.
    * @throws NullPointerException if the type is null
    */
@@ -245,8 +245,8 @@ public class Field implements IndexableField {
     this.type = type;
     this.name = name;
     this.fieldsData = value;
+    System.out.println("===fieldsData===248==="+this.hashCode()+"==="+fieldsData);//try { Integer.parseInt("fieldsData"); }catch (Exception e){e.printStackTrace();}
   }
-
   /**
    * The value of the field as a String, or null. If null, the Reader value or
    * binary value is used. Exactly one of stringValue(), readerValue(), and
@@ -303,8 +303,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("value must not be null");
     }
     fieldsData = value;
+    System.out.println("===fieldsData===306==="+this.hashCode()+"==="+fieldsData);
   }
-  
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -314,8 +314,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("cannot change value type from " + fieldsData.getClass().getSimpleName() + " to Reader");
     }
     fieldsData = value;
+    System.out.println("===fieldsData===317==="+this.hashCode()+"==="+fieldsData);
   }
-  
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -342,8 +342,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("value must not be null");
     }
     fieldsData = value;
+    System.out.println("===fieldsData===344==="+this.hashCode()+"==="+fieldsData);
   }
-
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -353,8 +353,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("cannot change value type from " + fieldsData.getClass().getSimpleName() + " to Byte");
     }
     fieldsData = Byte.valueOf(value);
+    System.out.println("===fieldsData===356==="+this.hashCode()+"==="+fieldsData);
   }
-
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -364,8 +364,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("cannot change value type from " + fieldsData.getClass().getSimpleName() + " to Short");
     }
     fieldsData = Short.valueOf(value);
+    System.out.println("===fieldsData===367==="+this.hashCode()+"==="+fieldsData);
   }
-
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -375,8 +375,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("cannot change value type from " + fieldsData.getClass().getSimpleName() + " to Integer");
     }
     fieldsData = Integer.valueOf(value);
+    System.out.println("===fieldsData===378==="+this.hashCode()+"==="+fieldsData);
   }
-
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -386,8 +386,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("cannot change value type from " + fieldsData.getClass().getSimpleName() + " to Long");
     }
     fieldsData = Long.valueOf(value);
+    System.out.println("===fieldsData===389==="+this.hashCode()+"==="+fieldsData);
   }
-
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -397,8 +397,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("cannot change value type from " + fieldsData.getClass().getSimpleName() + " to Float");
     }
     fieldsData = Float.valueOf(value);
+    System.out.println("===fieldsData===400==="+this.hashCode()+"==="+fieldsData);
   }
-
   /**
    * Expert: change the value of this field. See 
    * {@link #setStringValue(String)}.
@@ -408,8 +408,8 @@ public class Field implements IndexableField {
       throw new IllegalArgumentException("cannot change value type from " + fieldsData.getClass().getSimpleName() + " to Double");
     }
     fieldsData = Double.valueOf(value);
+    System.out.println("===fieldsData===411==="+this.hashCode()+"==="+fieldsData);
   }
-
   /**
    * Expert: sets the token stream to be used for indexing and causes
    * isIndexed() and isTokenized() to return true. May be combined with stored
@@ -439,7 +439,7 @@ public class Field implements IndexableField {
   @Override
   public BytesRef binaryValue() {
     if (fieldsData instanceof BytesRef) {
-      System.out.println("===binaryValue===442==="+fieldsData.getClass().getName()+"==="+this);
+      System.out.println("===binaryValue===442==="+((BytesRef) fieldsData).length+"==="+((BytesRef) fieldsData).bytes.length+"==="+this.hashCode());
       return (BytesRef) fieldsData;
     } else {
       return null;

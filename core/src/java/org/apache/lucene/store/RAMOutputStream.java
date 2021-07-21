@@ -59,7 +59,7 @@ public class RAMOutputStream extends IndexOutput implements Accountable {
   public RAMOutputStream(String name, RAMFile f, boolean checksum) {
     super("RAMOutputStream(name=\"" + name + "\")", name);
     file = f;
-
+    System.out.println("===RAMOutputStream===62==="+f);
     // make sure that we switch to the
     // first needed buffer lazily
     currentBufferIndex = -1;

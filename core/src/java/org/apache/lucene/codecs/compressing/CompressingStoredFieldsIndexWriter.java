@@ -104,7 +104,7 @@ public final class CompressingStoredFieldsIndexWriter implements Closeable {
   private void writeBlock() throws IOException {
     assert blockChunks > 0;
     fieldsIndexOut.writeVInt(blockChunks);
-
+    System.out.println("===writeBlock===107===="+blockChunks);
     // The trick here is that we only store the difference from the average start
     // pointer or doc base, this helps save bits per value.
     // And in order to prevent a few chunks that would be far from the average to

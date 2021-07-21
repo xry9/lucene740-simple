@@ -45,7 +45,7 @@ public abstract class IndexOutput extends DataOutput implements Closeable {
     }
     this.resourceDescription = resourceDescription;
     this.name = name;
-    System.out.println("===IndexOutput===48==="+name);//try{ Integer.parseInt("IndexOutput"); }catch (Exception e){e.printStackTrace();}
+    //System.out.println("===IndexOutput===48==="+name);//try{ Integer.parseInt("IndexOutput"); }catch (Exception e){e.printStackTrace();}
   }
   /** Returns the name used to create this {@code IndexOutput}.  This is especially useful when using
    * {@link Directory#createTempOutput}. */

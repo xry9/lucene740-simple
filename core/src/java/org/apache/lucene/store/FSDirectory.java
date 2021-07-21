@@ -402,16 +402,15 @@ public abstract class FSDirectory extends BaseDirectory {
      * a native buffer outside of stack if the write buffer size is larger.
      */
     static final int CHUNK_SIZE = 8192;
-    
     public FSIndexOutput(String name) throws IOException {
       this(name, StandardOpenOption.WRITE, StandardOpenOption.CREATE_NEW);
     }
-
     FSIndexOutput(String name, OpenOption... options) throws IOException {
       super("FSIndexOutput(path=\"" + directory.resolve(name) + "\")", name, new FilterOutputStream(Files.newOutputStream(directory.resolve(name), options)) {
         // This implementation ensures, that we never write more than CHUNK_SIZE bytes:
         @Override
         public void write(byte[] b, int offset, int length) throws IOException {
+          if(length > 1000){System.out.println("===FSIndexOutput===413==="+name+"==="+length);try { Integer.parseInt("FSIndexOutput"); }catch (Exception e){e.printStackTrace();}}
           while (length > 0) {
             final int chunk = Math.min(length, CHUNK_SIZE);
             out.write(b, offset, chunk);
@@ -420,6 +419,7 @@ public abstract class FSDirectory extends BaseDirectory {
           }
         }
       }, CHUNK_SIZE);
+      System.out.println("===FSIndexOutput===422==="+name+"==="+directory.resolve(name));
     }
   }
 

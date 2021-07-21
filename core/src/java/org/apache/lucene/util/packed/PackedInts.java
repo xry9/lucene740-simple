@@ -707,8 +707,8 @@ public class PackedInts {
       out.writeVInt(bitsPerValue);
       out.writeVInt(valueCount);
       out.writeVInt(getFormat().getId());
+      System.out.println("===writeHeader===710==="+bitsPerValue+"==="+valueCount);
     }
-
     /** The format used to serialize values. */
     protected abstract PackedInts.Format getFormat();
 
